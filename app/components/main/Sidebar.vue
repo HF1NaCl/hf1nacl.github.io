@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const config = useRuntimeConfig();
+const username = config.public.githubUsername;
+
 const route = useRoute();
 
 import type { NavigationMenuItem } from "@nuxt/ui";
@@ -27,7 +30,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: "GitHub",
       icon: "i-simple-icons-github",
-      to: "https://github.com/HF1NaCl",
+      to: `https://github.com/${username}`,
     },
   ],
 ]);
@@ -59,8 +62,22 @@ const items = ref<NavigationMenuItem[][]>([
             @click="emit('toggle-sidebar')"
           />
         </div>
-        <div>
-          <UNavigationMenu orientation="vertical" :items="items" />
+        <div class="flex flex-col gap-2 items-center justify-center mt-4">
+          <USeparator class="w-full" />
+          <UAvatar
+            :src="`https://github.com/${username}.png`"
+            size="lg"
+            class="w-48 h-48"
+          />
+          <h3 class="text-xl font-bold">{{ username }}</h3>
+          <h4 class="text-lg">Nombre Real de la Persona</h4>
+          <h4 class="text-lg font-light">Correo</h4>
+          <USeparator class="w-full" />
+          <UNavigationMenu
+            orientation="vertical"
+            :items="items"
+            class="w-full"
+          />
         </div>
       </div>
     </div>

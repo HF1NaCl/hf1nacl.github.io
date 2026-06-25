@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     preference: "system",
   },
 
+  runtimeConfig: {
+    public: {
+      githubUsername: import.meta.env.GITHUB_USERNAME,
+    },
+  },
+
   routeRules: {
     "/": { prerender: true },
   },

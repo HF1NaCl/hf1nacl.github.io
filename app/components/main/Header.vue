@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const config = useRuntimeConfig();
+const username = config.public.githubUsername;
 // El modo Oscuro se calcula con el dark: con el TailwindCSS, no hace falta importar nada
 const props = defineProps({
   isOpen: Boolean,
@@ -21,7 +23,7 @@ const emit = defineEmits(["toggle-sidebar"]);
           @click="$emit('toggle-sidebar')"
         />
         <div class="h-6 w-px bg-gray-300 hidden md:block"></div>
-        <h2 class="text-gray-500 hidden md:block">Nombre de la Página</h2>
+        <h2 class="hidden md:block">Portafolio de {{ username }}</h2>
       </div>
       <div class="flex items-center gap-4">
         <UButton
@@ -29,6 +31,7 @@ const emit = defineEmits(["toggle-sidebar"]);
           size="md"
           color="neutral"
           variant="ghost"
+          :to="`https://github.com/${username}`"
         />
         <UColorModeButton />
       </div>
