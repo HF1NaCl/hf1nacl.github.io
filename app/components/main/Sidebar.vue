@@ -2,9 +2,12 @@
 const config = useRuntimeConfig();
 const username = config.public.githubUsername;
 
-const route = useRoute();
+const { $github } = useNuxtApp();
+
+const user: GithubUser = await $github(`/users/${username}`);
 
 import type { NavigationMenuItem } from "@nuxt/ui";
+import type { GithubUser } from "~/interfaces/GithubUser.interface";
 
 defineProps({
   isOpen: Boolean,
@@ -14,23 +17,27 @@ const emit = defineEmits(["toggle-sidebar"]);
 const items = ref<NavigationMenuItem[][]>([
   [
     {
+      label: "Inicio",
+      to: "/",
+      icon: "i-lucide-house",
+    },
+    {
       label: "Proyectos",
       to: "/projects",
       icon: "i-lucide-folder-git",
-      active: route.path.startsWith("/projects"),
     },
     {
       label: "Acerca De",
       to: "/about",
       icon: "i-lucide-info",
-      active: route.path.startsWith("/about"),
     },
   ],
   [
     {
       label: "GitHub",
       icon: "i-simple-icons-github",
-      to: `https://github.com/${username}`,
+      to: `${user.html_url}`,
+      target: "_blank",
     },
   ],
 ]);
@@ -39,7 +46,7 @@ const items = ref<NavigationMenuItem[][]>([
 <template>
   <div>
     <div
-      class="fixed inset-0 bg-black/40 transition-opacity duration-300"
+      class="fixed inset-0 z-20 bg-black/40 transition-opacity duration-300"
       :class="
         isOpen
           ? 'opacity-100 pointer-events-auto'
@@ -70,8 +77,8 @@ const items = ref<NavigationMenuItem[][]>([
             class="w-48 h-48"
           />
           <h3 class="text-xl font-bold">{{ username }}</h3>
-          <h4 class="text-lg">Nombre Real de la Persona</h4>
-          <h4 class="text-lg font-light">Correo</h4>
+          <h4 class="text-lg">{{ user.name }}</h4>
+          <h4 class="text-lg font-light">{{ user.email }}</h4>
           <USeparator class="w-full" />
           <UNavigationMenu
             orientation="vertical"

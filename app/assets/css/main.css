@@ -16,3 +16,28 @@
   --color-green-900: #0A5331;
   --color-green-950: #052E16;
 }
+
+:root:not(.dark) {
+  --ui-color-primary-50: var(--color-green-50);
+  --ui-color-primary-100: var(--color-green-100);
+  --ui-color-primary-200: var(--color-green-200);
+  --ui-color-primary-300: var(--color-green-300);
+  --ui-color-primary-400: var(--color-green-400);
+  --ui-color-primary-500: var(--color-green-500);
+  --ui-color-primary-600: var(--color-green-600);
+  --ui-color-primary-700: var(--color-green-700);
+  --ui-color-primary-800: var(--color-green-800);
+  --ui-color-primary-900: var(--color-green-900);
+  --ui-color-primary-950: var(--color-green-950);
+  --ui-color-neutral-50: var(--color-slate-50);
+  --ui-color-neutral-100: var(--color-slate-100);
+  --ui-color-neutral-200: var(--color-slate-200);
+  --ui-color-neutral-300: var(--color-slate-300);
+  --ui-color-neutral-400: var(--color-slate-400);
+  --ui-color-neutral-500: var(--color-slate-500);
+  --ui-color-neutral-600: var(--color-slate-600);
+  --ui-color-neutral-700: var(--color-slate-700);
+  --ui-color-neutral-800: var(--color-slate-800);
+  --ui-color-neutral-900: var(--color-slate-900);
+  --ui-color-neutral-950: var(--color-slate-950);
+}

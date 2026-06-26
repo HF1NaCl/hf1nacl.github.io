@@ -10,7 +10,7 @@ const emit = defineEmits(["toggle-sidebar"]);
 
 <template>
   <div
-    class="border-b shadow transition-all duration-300 border-success dark:border-error"
+    class="fixed backdrop-blur-sm inset-x-0 top-0 z-10 border-b bg-default/80 shadow transition-all duration-300 border-success dark:border-error"
   >
     <div class="mx-auto flex h-16 max-w-7x1 items-center justify-between px-4">
       <!--Left Group-->
@@ -32,6 +32,7 @@ const emit = defineEmits(["toggle-sidebar"]);
           color="neutral"
           variant="ghost"
           :to="`https://github.com/${username}`"
+          target="_blank"
         />
         <UColorModeButton />
       </div>
