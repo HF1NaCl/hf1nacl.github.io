@@ -1,13 +1,15 @@
 <script setup lang="ts">
-const config = useRuntimeConfig();
-const username = config.public.githubUsername;
-
-const { $github } = useNuxtApp();
-
-const user: GithubUser = await $github(`/users/${username}`);
-
 import type { NavigationMenuItem } from "@nuxt/ui";
 import type { GithubUser } from "~/interfaces/GithubUser.interface";
+
+const config = useRuntimeConfig();
+const username = config.public.githubUsername;
+const { $github } = useNuxtApp();
+
+// Extrae la información del usuario una sola vez durante la compilación
+const { data: user } = await useAsyncData("github_user", () =>
+  $github<GithubUser>(`/users/${username}`),
+);
 
 defineProps({
   isOpen: Boolean,
@@ -36,7 +38,8 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: "GitHub",
       icon: "i-simple-icons-github",
-      to: `${user.html_url}`,
+      // Si el user es nulo temporalmente, ponemos un link por defecto
+      to: user.value?.html_url || `https://github.com/${username}`,
       target: "_blank",
     },
   ],
