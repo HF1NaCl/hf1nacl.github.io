@@ -33,9 +33,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      # Pick your own package manager and build script
-      - run: npm install
-      - run: npx nuxt build --preset github_pages
+      - run: pnpm install
+      - run: pnpm nuxt build --preset github_pages
+        env:
+          GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
