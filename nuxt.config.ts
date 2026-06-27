@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      githubUsername: import.meta.env.GITHUB_USERNAME,
+      githubUsername: '',
     },
   },
 
