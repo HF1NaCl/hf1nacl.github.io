@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "node scripts/fetch-github.mjs && nuxt build",
+    "generate": "node scripts/fetch-github.mjs && nuxt generate",
+    "dev": "node scripts/fetch-github.mjs && nuxt dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",

@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
-import type { GithubUser } from "~/interfaces/GithubUser.interface";
+import githubCache from "~/assets/github-cache.json";
 
 const config = useRuntimeConfig();
 const username = config.public.githubUsername;
-const { $github } = useNuxtApp();
-
-// Extrae la información del usuario una sola vez durante la compilación
-const { data: user } = await useAsyncData("github_user", () =>
-  $github<GithubUser>(`/users/${username}`),
-);
+const user = githubCache.user;
 
 defineProps({
   isOpen: Boolean,

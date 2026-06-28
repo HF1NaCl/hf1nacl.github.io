@@ -1,60 +1,66 @@
 <script setup lang="ts">
-import type { GithubRepo } from "~/interfaces/GithubRepo.interface";
+import githubCache from "~/assets/github-cache.json";
 
 const config = useRuntimeConfig();
 const username = config.public.githubUsername;
-const { $github } = useNuxtApp();
+const repos = githubCache.repos || [];
 
-// useAsyncData le dice a Nuxt que guarde este resultado en el payload estático de la build
-const { data: repos } = await useAsyncData(
-  "github_repos",
-  () => $github<GithubRepo[]>(`/users/${username}/repos`),
-  {
-    default: () => [], // Evita errores de array nulo en el template
-  },
-);
+const search = ref("");
+const language = ref("");
+
+const filteredRepos = computed(() => {
+  const query = search.value.toLowerCase().trim();
+  const selectedLang = language.value;
+  return repos.filter((repo) => {
+    if (repo.name === username.toLowerCase()) return false;
+    const matchesSearch = repo.name.toLowerCase().includes(query);
+    const matchesLanguage = !selectedLang || repo.language === selectedLang;
+    return matchesSearch && matchesLanguage;
+  });
+});
+
+const languages = computed(() => {
+  const list = repos
+    .filter((repo) => repo.name !== username.toLowerCase() && repo.language)
+    .map((repo) => repo.language);
+
+  return Array.from(new Set(list)).sort();
+});
 </script>
 
 <template>
-  <div class="mt-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    <UCard
-      v-for="repo in repos.filter((r) => r.name !== username.toLowerCase())"
-      :key="repo.id"
-    >
-      <div>
-        <div class="flex justify-between items-start gap-2">
-          <h3 class="font-bold text-lg truncate">{{ repo.name }}</h3>
-          <span
-            v-if="repo.stargazers_count"
-            class="text-xs text-amber-500 whitespace-nowrap"
-          >
-            ★ {{ repo.stargazers_count }}
-          </span>
-        </div>
-        <p class="text-sm text-neutral-500 my-2 line-clamp-2">
-          {{ repo.description || "No se proporcionó una descripción" }}
-        </p>
-        <div
-          class="flex justify-between items-center text-xs mt-4 pt-2 border-t border-neutral-100 dark:border-neutral-800"
-        >
-          <span class="text-neutral-400">{{
-            repo.language || "Markdown"
-          }}</span>
-          <NuxtLink
-            v-if="repo.has_pages"
-            :to="`https://${username.toLowerCase()}.github.io/${repo.name}`"
-            class="text-primary-500 hover:underline"
-          >
-            Ver proyecto en GitHub Pages
-          </NuxtLink>
-          <NuxtLink
-            :to="`${repo.html_url}`"
-            class="text-primary-500 hover:underline"
-          >
-            Ver Más
-          </NuxtLink>
-        </div>
-      </div>
-    </UCard>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex gap-2 mb-4">
+      <UInput
+        type="text"
+        v-model="search"
+        placeholder="Buscar proyecto..."
+        color="primary"
+        variant="subtle"
+        icon="i-heroicons-magnifying-glass"
+        class="max-w-xs"
+      />
+      <UInputMenu
+        v-model="language"
+        :items="languages"
+        placeholder="Filtrar por lenguaje..."
+        class="max-w-xs"
+      />
+      <UButton
+        v-if="search || language"
+        color="neutral"
+        variant="ghost"
+        icon="i-heroicons-x-mark"
+        @click="
+          () => {
+            search = '';
+            language = '';
+          }
+        "
+      >
+        Limpiar
+      </UButton>
+    </div>
+    <ProjectsCards :repos="filteredRepos" :username="username" />
   </div>
 </template>

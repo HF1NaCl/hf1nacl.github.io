@@ -15,7 +15,7 @@ function toggleSidebar() {
         @toggle-sidebar="toggleSidebar()"
         class="shrink-0"
       />
-      <main class="container mx-auto flex-1 mt-2 mb-8">
+      <main class="container mx-auto flex-1 mt-4 mb-8">
         <slot />
       </main>
     </div>

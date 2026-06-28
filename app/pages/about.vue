@@ -1,3 +1,7 @@
+<script setup lang="ts"></script>
+
 <template>
-  <h1>About</h1>
+  <div class="section flex flex-col gap-4 md:items-center">
+    <AboutCards />
+  </div>
 </template>
