@@ -1,64 +1,17 @@
-# Nuxt Starter Template
+# hf1nacl.github.io
 
 [![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+Interfaz de Portafolio para uso de presentación Laboral para presentar proyectos hechos en GitHub. La idea es sencilla: Ver enlace, ver proyectos y consultar repositorios sin sobrecarga de datos.
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+## ¿Quieres probar en Dev?
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+`npm run dev` Es la línea sencilla que se necesita colocar para hacer funcionar el proyecto. Puedes revisar el .env.template para una idea de cómo cambiar el nombre de Usuario.
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+### ¿Cómo puedo hacer algo así parecido?
 
-## Quick Start
+Sencillo, usa el Template Starter de Nuxt UI y podrás alcanzar una interfaz sobria y sencilla como esta.
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
+### ¿Esto entonces quedará actualizado?
 
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-pnpm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-pnpm dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+Siempre y cuando suba un nuevo proyecto, se hará un deploy para sincronizar los nuevos proyectos existentes.

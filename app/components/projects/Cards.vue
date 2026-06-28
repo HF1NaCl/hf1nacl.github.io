@@ -65,10 +65,15 @@ const getLanguageColor = (lang: string) => {
           </div>
           <NuxtLink
             v-if="repo.has_pages"
-            :to="`https://${username.toLowerCase()}.github.io/${repo.name}`"
+            :to="
+              repo.name === `${username.toLowerCase()}.github.io`
+                ? undefined
+                : `https://${username.toLowerCase()}.github.io/${repo.name}`
+            "
             class="text-primary-500 hover:underline"
           >
-            Ver proyecto en GitHub Pages
+            <p v-if="repo.name === 'hf1nacl.github.io'">Ya estás aquí</p>
+            <p v-else>Ver proyecto en GitHub Pages</p>
           </NuxtLink>
           <NuxtLink
             :to="`${repo.html_url}`"
