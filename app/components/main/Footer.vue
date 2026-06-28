@@ -14,7 +14,7 @@ const username = config.public.githubUsername;
       <span class="text-center text-muted"
         >Hecho con <a class="font-bold">Nuxt UI </a></span
       >
-      <UIcon name="simple-icons:nuxt text-primary" class="size-5" />
+      <UIcon name="simple-icons:nuxt" class="text-primary size-5" />
     </div>
     <template #right>
       <UButton
