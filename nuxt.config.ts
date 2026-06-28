@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      githubUsername: '',
+      githubUsername: process.env.NUXT_PUBLIC_GITHUB_USERNAME,
     },
   },
 
@@ -36,10 +36,10 @@ export default defineNuxtConfig({
   ssr: true,
 
   nitro: {
-    preset: 'github_pages',
-  }, 
+    preset: "github_pages",
+  },
 
   app: {
-    baseURL: '/',
-  }
+    baseURL: "/",
+  },
 });
