@@ -10,7 +10,12 @@ const username = config.public.githubUsername;
         {{ username }} - {{ new Date().getFullYear() }}
       </p>
     </template>
-
+    <div class="flex gap-1">
+      <span class="text-center text-muted"
+        >Hecho con <a class="font-bold">Nuxt UI </a></span
+      >
+      <UIcon name="simple-icons:nuxt text-primary" class="size-5" />
+    </div>
     <template #right>
       <UButton
         icon="i-simple-icons-github"
