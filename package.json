@@ -12,6 +12,7 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/lucide": "^1.2.112",
     "@iconify-json/simple-icons": "^1.2.86",
     "@nuxt/ui": "^4.8.2",
