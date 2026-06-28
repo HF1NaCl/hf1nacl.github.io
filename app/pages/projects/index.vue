@@ -37,7 +37,7 @@ const languages = computed(() => {
         placeholder="Buscar proyecto..."
         color="primary"
         variant="subtle"
-        icon="i-heroicons-magnifying-glass"
+        icon="heroicons:magnifying-glass"
         class="max-w-xs"
       />
       <UInputMenu
@@ -50,7 +50,7 @@ const languages = computed(() => {
         v-if="search || language"
         color="neutral"
         variant="ghost"
-        icon="i-heroicons-x-mark"
+        icon="heroicons:x-mark"
         @click="
           () => {
             search = '';
