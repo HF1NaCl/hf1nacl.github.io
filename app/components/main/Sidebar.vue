@@ -5,7 +5,6 @@ import githubCache from "~/assets/github-cache.json";
 const config = useRuntimeConfig();
 const username = config.public.githubUsername;
 const user = githubCache.user;
-console.log(config.public.githubUsername);
 
 defineProps({
   isOpen: Boolean,
