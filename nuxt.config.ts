@@ -7,7 +7,12 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/main.css"],
-
+  icon: {
+    clientBundle: {
+      scan: true,
+      includeCustomCollections: true,
+    },
+  },
   colorMode: {
     preference: "system",
   },
